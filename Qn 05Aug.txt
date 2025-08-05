@@ -1,0 +1,13 @@
+In movieapp front end add a component MovieForm
+with following fields
+-MovieID, Number
+-MovieName, Text
+-MovieDescription, TextArea
+-MovieRating, DropDown
+-Submit button named "Add Movie"
+
+On clicking add movie display all values in console as object with following form
+{"movieid":4,"moviename":"John Reacher","moviedescription":"Fabulous performance by tom cruise","movierating":9}
+
+Note: Use onchange to get input field data if possible
+
