@@ -11,7 +11,6 @@ server.get("/movies/all", async (req,res)=>
     try
     {
     const allmovies=await Movies.find({})
-    console.log(allmovies);
     res.send(allmovies)
     }
     catch(error)
@@ -26,9 +25,17 @@ server.post("/movies/add",async (req,res)=>
     await movie.save()//saving to db
     res.send("Movie Saved")
 })
-server.get("movies/:mid",(req,res)=>
+server.get("/movies/:mid", async (req,res)=>
 {
-
+    try
+    {
+    const allmovies=await Movies.findOne({movieid:req.params.mid})
+    res.send(allmovies)
+    }
+    catch(error)
+    {
+        console.log(error);
+    }
 })
 server.put("movies/update/:mid",(req,res)=>
 {
