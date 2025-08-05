@@ -1,8 +1,10 @@
 const express=require("express")
+const cors=require("cors")
 const db=require("./config/dbConnection")
 const Movies=require("./models/movieModel")
 const server=express()
 server.use(express.json())
+server.use(cors())//allow all origin
 //db connectivity
 db.dbConnect()
 //routing
