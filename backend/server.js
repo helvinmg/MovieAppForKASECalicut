@@ -37,13 +37,31 @@ server.get("/movies/:mid", async (req,res)=>
         console.log(error);
     }
 })
-server.put("movies/update/:mid",(req,res)=>
+server.put("/movies/update/:mid",async (req,res)=>
 {
-
+    let id=req.params.mid
+    let newmovie=req.body
+    try
+    {
+    await Movies.findOneAndUpdate({movieid:id},newmovie)
+    res.send("Updated requested movie details")
+    }
+    catch(error)
+    {
+        console.log(error);
+    }
 })
-server.delete("movies/delete/:mid",(req,res)=>
+server.delete("/movies/delete/:mid",async (req,res)=>
 {
-
+try
+    {
+    await Movies.findOneAndDelete({movieid:req.params.mid})
+    res.send("Deleted requested movie details")
+    }
+    catch(error)
+    {
+        console.log(error);
+    }
 })
 
 server.listen(3333,()=>console.log("Server is running on PORT 3333"))

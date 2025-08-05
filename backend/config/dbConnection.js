@@ -3,7 +3,7 @@ const dbConnect=()=>
 {
     try
     {
-        mongoose.connect("mongodb://localhost:27017/MovieDBKASE")
+        mongoose.connect("mongodb://127.0.0.1:27017/MovieDBKASE")
         console.log("DB Connection Successful");
     }
     catch(err)
