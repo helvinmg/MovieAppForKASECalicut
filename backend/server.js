@@ -22,10 +22,18 @@ server.get("/movies/all", async (req,res)=>
 })
 server.post("/movies/add",async (req,res)=>
 {
+    try
+    {
     const newmovie=req.body
     const movie=new Movies(newmovie)//creating Movie object
     await movie.save()//saving to db
     res.send("Movie Saved")
+    }
+    catch(err)
+    {
+        console.log(err);
+        res.send(err.message)
+    }
 })
 server.get("/movies/:mid", async (req,res)=>
 {
@@ -58,11 +66,12 @@ server.delete("/movies/delete/:mid",async (req,res)=>
 try
     {
     await Movies.findOneAndDelete({movieid:req.params.mid})
-    res.send("Deleted requested movie details")
+    res.send("Deleted Successfully")
     }
     catch(error)
     {
         console.log(error);
+        res.send(error.message)
     }
 })
 
